@@ -58,6 +58,6 @@ public class Student implements Serializable {
 
     @Override
     public String toString() {
-        return "ID: " + this.id + ", Name: " + this.name + ", Location: " + this.location + ", Course: " + this.course;
+        return "ID: " + this.id + "\n\tName: " + this.name + "\n\tLocation: " + this.location + "\n\tCourse: " + this.course;
     }
 }
