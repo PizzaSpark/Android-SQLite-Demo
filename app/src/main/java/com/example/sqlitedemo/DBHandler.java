@@ -2,8 +2,12 @@ package com.example.sqlitedemo;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
@@ -47,8 +51,40 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     //view all students
+    public List<Student> getAllStudents() {
+        List<Student> students = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + TABLE_NAME;
 
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
 
+        if (cursor.moveToFirst()) {
+            do {
+                Student student = new Student();
+                student.setId(cursor.getInt(0));
+                student.setName(cursor.getString(1));
+                student.setLocation(cursor.getString(2));
+                student.setCourse(cursor.getString(3));
+
+                students.add(student);
+            } while (cursor.moveToNext());
+        }
+
+        return students;
+    }
+
+    //update student
+    public void updateStudent(Student student) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, student.getName());
+        values.put(COLUMN_LOCATION, student.getLocation());
+        values.put(COLUMN_COURSE, student.getCourse());
+
+        db.update(TABLE_NAME, values, COLUMN_ID + " = ?", new String[]{String.valueOf(student.getId())});
+        db.close();
+    }
 
 
 

@@ -1,6 +1,8 @@
 package com.example.sqlitedemo;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
     private int id;
     private String name;
     private String location;
@@ -52,5 +54,10 @@ public class Student {
 
     public void setCourse(String course) {
         this.course = course;
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + this.id + ", Name: " + this.name + ", Location: " + this.location + ", Course: " + this.course;
     }
 }
