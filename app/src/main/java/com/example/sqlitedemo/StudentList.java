@@ -45,6 +45,7 @@ public class StudentList extends AppCompatActivity{
             public void onClick(View v) {
                 Intent intent = new Intent(StudentList.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -56,6 +57,7 @@ public class StudentList extends AppCompatActivity{
                 Intent intent = new Intent(StudentList.this, MainActivity.class);
                 intent.putExtra("Student", clickedStudent);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -65,13 +67,12 @@ public class StudentList extends AppCompatActivity{
         dispatcher.addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                startActivity(MainActivity.class);
+                finish();
             }
         });
     }
 
     public void startActivity(Class<?> cls){
         startActivity(new Intent(this, cls));
-        finish();
     }
 }
