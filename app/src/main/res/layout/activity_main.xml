@@ -63,5 +63,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View Record" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

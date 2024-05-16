@@ -7,6 +7,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.view.View;
 import android.content.Intent;
+
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +45,7 @@ public class StudentList extends AppCompatActivity{
             public void onClick(View v) {
                 Intent intent = new Intent(StudentList.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -53,8 +57,22 @@ public class StudentList extends AppCompatActivity{
                 Intent intent = new Intent(StudentList.this, MainActivity.class);
                 intent.putExtra("Student", clickedStudent);
                 startActivity(intent);
+                finish();
+            }
+        });
+
+
+        //detect back press
+        OnBackPressedDispatcher dispatcher = getOnBackPressedDispatcher();
+        dispatcher.addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
             }
         });
     }
 
+    public void startActivity(Class<?> cls){
+        startActivity(new Intent(this, cls));
+    }
 }
