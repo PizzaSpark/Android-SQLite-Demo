@@ -67,6 +67,7 @@ public class StudentList extends AppCompatActivity{
         dispatcher.addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
+                startActivity(MainActivity.class);
                 finish();
             }
         });
