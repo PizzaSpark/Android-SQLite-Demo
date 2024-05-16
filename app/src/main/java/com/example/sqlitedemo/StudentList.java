@@ -16,10 +16,10 @@ import java.util.List;
 
 public class StudentList extends AppCompatActivity{
 
-    private ListView lvStudentList;
-    private Button btnBack;
+    ListView lvStudentList;
+    Button btnBack;
     private List<Student> students;
-    private DBHandler dbHandler;
+    DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
