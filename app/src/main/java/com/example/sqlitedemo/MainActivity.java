@@ -95,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
 
         btnView.setOnClickListener(v -> {
             startActivity(StudentList.class);
-            finish();
         });
 
         btnDelete.setOnClickListener(v -> {
@@ -140,5 +139,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void startActivity(Class<?> cls){
         startActivity(new Intent(this, cls));
+        finish();
     }
 }
